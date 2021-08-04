@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import { useEffect, useState } from 'react';
+import { Flex, Text } from '@chakra-ui/react';
 
-import { api } from "../../services/api";
+import { api } from '../../services/api';
 
-import { getCandleColor } from "../../helpers/getCandleColor";
+import { getCandleColor } from '../../helpers/getCandleColor';
 
-import { Asset5FiveFlipTorresGemeas, IAsset, ICandle } from "../../components/Asset5FiveFlipTorresGemeas";
+import {
+  Asset5FiveFlipTorresGemeas,
+  IAsset,
+  ICandle,
+} from '../../components/Asset5FiveFlipTorresGemeas';
 
 export default function FiveFlipTorresGemeas(): JSX.Element {
   const [loading, setLoading] = useState(false);
@@ -18,8 +22,8 @@ export default function FiveFlipTorresGemeas(): JSX.Element {
 
         const response = await api.get('/assets', {
           params: {
-            timeframe: 1
-          }
+            timeframe: 1,
+          },
         });
 
         // const data = JSON.parse(response.data.replaceAll("'", '"'));
@@ -36,7 +40,7 @@ export default function FiveFlipTorresGemeas(): JSX.Element {
         //     candles
         //   }
         // }));
-      } catch(err) {
+      } catch (err) {
         console.log(err);
       } finally {
         setLoading(false);
@@ -46,13 +50,22 @@ export default function FiveFlipTorresGemeas(): JSX.Element {
     loadAssets();
   }, []);
 
-  if(loading) {
-    return <Text>Loading...</Text>
+  if (loading) {
+    return <Text>Loading...</Text>;
   }
 
   return (
-    <Flex bg='gray.100' minHeight='100vh' flexDir='column' p='4' paddingTop='2' alignItems='center'>
-      {assets.map(asset => <Asset5FiveFlipTorresGemeas key={asset.name} asset={asset} />)}
+    <Flex
+      bg="gray.100"
+      minHeight="100vh"
+      flexDir="column"
+      p="4"
+      paddingTop="2"
+      alignItems="center"
+    >
+      {assets.map(asset => (
+        <Asset5FiveFlipTorresGemeas key={asset.name} asset={asset} />
+      ))}
     </Flex>
-  )
+  );
 }

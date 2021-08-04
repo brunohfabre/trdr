@@ -28,15 +28,17 @@ export type IAsset = {
 };
 
 interface AssetProps {
-  asset: IAssetProcessed;
+  asset: any;
 }
 
 export function Asset({ asset }: AssetProps): JSX.Element {
   const { name, candles } = asset;
 
   const winrate = useMemo(() => {
-    const loss = candles.filter(candle => candle.status === 'loss').length;
-    const win = candles.filter(candle => candle.status === 'win').length;
+    const loss = candles.filter(
+      (candle: any) => candle.status === 'loss',
+    ).length;
+    const win = candles.filter((candle: any) => candle.status === 'win').length;
     const total = loss + win;
 
     return ((win / total) * 100).toFixed(2);
@@ -58,7 +60,7 @@ export function Asset({ asset }: AssetProps): JSX.Element {
       </Flex>
 
       <SimpleGrid marginTop="2" columns={6}>
-        {candles.map(candle => (
+        {candles.map((candle: any) => (
           <Candle key={candle.candle.id} candle={candle} />
         ))}
       </SimpleGrid>
