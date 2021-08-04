@@ -1,12 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
-import { Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { useEffect, useMemo, useState } from 'react';
+import { Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 
-import { getCandleColor } from "../helpers/getCandleColor";
-import { IAssetProcessed } from "../helpers/processAssetsM1";
+import { getCandleColor } from '../helpers/getCandleColor';
+import { IAssetProcessed } from '../helpers/processAssetsM1';
 
-import { Candle } from "./Candle";
+import { Candle } from './Candle';
 
-export type IColor = "green" | "red" | "doji";
+export type IColor = 'green' | 'red' | 'doji';
 
 export type ICandle = {
   at: number;
@@ -35,8 +35,8 @@ export function Asset({ asset }: AssetProps): JSX.Element {
   const { name, candles } = asset;
 
   const winrate = useMemo(() => {
-    const loss = candles.filter((candle) => candle.status === "loss").length;
-    const win = candles.filter((candle) => candle.status === "win").length;
+    const loss = candles.filter(candle => candle.status === 'loss').length;
+    const win = candles.filter(candle => candle.status === 'win').length;
     const total = loss + win;
 
     return ((win / total) * 100).toFixed(2);
@@ -58,7 +58,7 @@ export function Asset({ asset }: AssetProps): JSX.Element {
       </Flex>
 
       <SimpleGrid marginTop="2" columns={6}>
-        {candles.map((candle) => (
+        {candles.map(candle => (
           <Candle key={candle.candle.id} candle={candle} />
         ))}
       </SimpleGrid>

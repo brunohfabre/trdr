@@ -1,11 +1,9 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { SmallAddIcon } from "@chakra-ui/icons";
-import { format } from "date-fns";
-
-import { ICandleWithResult } from "./Asset";
+import { Flex, Text } from '@chakra-ui/react';
+import { SmallAddIcon } from '@chakra-ui/icons';
+import { format } from 'date-fns';
 
 interface ICandleProps {
-  candle: ICandleWithResult;
+  candle: any;
 }
 
 export function Candle({ candle }: ICandleProps): JSX.Element {
@@ -13,11 +11,11 @@ export function Candle({ candle }: ICandleProps): JSX.Element {
     <Flex
       m="1"
       bg={
-        candle.status === "win"
-          ? "green.400"
-          : candle.status === "loss"
-          ? "red.400"
-          : "gray.200"
+        candle.status === 'win'
+          ? 'green.400'
+          : candle.status === 'loss'
+          ? 'red.400'
+          : 'gray.200'
       }
       boxShadow="sm"
       borderRadius="8"
@@ -26,8 +24,8 @@ export function Candle({ candle }: ICandleProps): JSX.Element {
       justifyContent="space-between"
     >
       <Flex>
-        {candle.position === "mg1" && <SmallAddIcon />}
-        {candle.position === "mg2" && (
+        {candle.position === 'mg1' && <SmallAddIcon />}
+        {candle.position === 'mg2' && (
           <>
             <SmallAddIcon />
             <SmallAddIcon />
@@ -35,7 +33,7 @@ export function Candle({ candle }: ICandleProps): JSX.Element {
         )}
       </Flex>
 
-      <Text fontSize="10">{format(candle.candle.date, "HH:mm")}</Text>
+      <Text fontSize="10">{format(candle.candle.date, 'HH:mm')}</Text>
     </Flex>
   );
 }
