@@ -6,41 +6,20 @@ const app = express();
 
 app.use(cors());
 
-// app.get('/assets', async (request, response) => {
-//   const [, result] = await new Promise((resolve, reject) => {
-//     PythonShell.run('../robot/assets1.py', null, (err, results) => {
-//       if (err) return reject(err);
-//       return resolve(results);
-//     });
-//   });
+function getCandleColor(candle) {
+  if(candle.close > candle.open) {
+    return 'green';
+  }
 
-//   return response.json(result);
-// });
+  if(candle.close < candle.open) {
+    return 'red';
+  }
 
-// app.get('/assets/m5/clone', async (request, response) => {
-//   const [, result] = await new Promise((resolve, reject) => {
-//     PythonShell.run('../robot/assetsm5clone.py', null, (err, results) => {
-//       if (err) return reject(err);
-//       return resolve(results);
-//     });
-//   });
-
-//   return response.json(result);
-// });
-
-// app.get('/assets/m5/milhao', async (request, response) => {
-//   const [, result] = await new Promise((resolve, reject) => {
-//     PythonShell.run('../robot/assetsm512h.py', null, (err, results) => {
-//       if (err) return reject(err);
-//       return resolve(results);
-//     });
-//   });
-
-//   return response.json(result);
-// });
+  return 'doji'
+}
 
 app.get('/assets', async (request, response) => {
-  const { timeframe } = request.query;
+  const { timeframe, timeback = 3 } = request.query;
 
   if(!timeframe) {
     return response.status(401).json({ message: 'Please inform the candles timeframe.' })
@@ -57,26 +36,22 @@ app.get('/assets', async (request, response) => {
   }
 
   const [, result] = await new Promise((resolve, reject) => {
-    PythonShell.run(`../robot/${script}`, null, (err, results) => {
+    PythonShell.run(`./src/${script}`, null, (err, results) => {
       if (err) return reject(err);
       
       return resolve(results);
     });
   });
 
-  return response.json(result);
+  const data = JSON.parse(result.replace(/\'/g, '"')).map(asset => ({
+    ...asset,
+    candles: asset.candles.map(candle => ({
+      ...candle,
+      color: getCandleColor(candle),
+    })),
+  }));
+
+  return response.json(data);
 });
-
-app.get('/backtest/insanetrader', async (request, response) => {
-  const [, result] = await new Promise((resolve, reject) => {
-    PythonShell.run('../robot/insaneTraderBackTest.py', null, (err, results) => {
-      if (err) return reject(err);
-
-      return resolve(results);
-    });
-  });
-
-  return response.json(result);
-})
 
 app.listen(4444, () => console.log('🚀 Server running on port 3333!'));
