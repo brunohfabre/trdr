@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    apiUrl: 'http://localhost:4444',
+    apiUrl: 'http://128.199.11.155:4444',
   },
 }

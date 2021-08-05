@@ -2,13 +2,11 @@ import { useEffect, useState } from 'react';
 import { Flex, SimpleGrid, Text } from '@chakra-ui/react';
 
 import { Asset, AssetType } from './Asset';
-import { api } from '../../services/api';
+import { api } from '../../../services/api';
 
 export default function Gaba(): JSX.Element {
   const [loading, setLoading] = useState(false);
   const [assets, setAssets] = useState<AssetType[]>([]);
-
-  console.log(assets);
 
   useEffect(() => {
     async function loadAssets(): Promise<void> {
