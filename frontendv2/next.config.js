@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    apiUrl: 'http://128.199.11.155:4444',
+    apiUrl: 'https://trdrapi.coddee.com.br',
   },
 }
