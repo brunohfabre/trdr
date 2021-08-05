@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Flex, SimpleGrid, Text } from '@chakra-ui/react';
 
-import { Asset, AssetType } from './Asset';
-import { api } from '../../../services/api';
+import { Asset, AssetType } from '../../components/gaba/Asset';
+import { api } from '../../services/api';
 
 export default function Gaba(): JSX.Element {
   const [loading, setLoading] = useState(false);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Flex, Text, useMediaQuery } from '@chakra-ui/react';
 
-import { Asset, AssetType } from './Asset';
+import { Asset, AssetType } from '../../components/ouro/Asset';
 import { api } from '../../services/api';
 
 export default function Ouro(): JSX.Element {
