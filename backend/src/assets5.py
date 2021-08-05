@@ -3,9 +3,8 @@ from math import trunc
 from datetime import datetime, timedelta
 from dateutil import tz
 from iqoptionapi.stable_api import IQ_Option
-from user import user
 
-Iq = IQ_Option(user['username'], user['password'])
+Iq = IQ_Option('bruno@coddee.com.br', '@Tmogrpt1')
 check, reason = Iq.connect()
 
 if check:
