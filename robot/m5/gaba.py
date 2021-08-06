@@ -17,12 +17,12 @@ else:
 	input('\n\n Aperte enter para sair')
 	sys.exit()
 
-def stop(lucro, gain, loss):
-	if lucro <= float('-' + str(abs(loss))):
-		print('Stop Loss batido!')
-		sys.exit()
+def stop(profit, stopGain):
+	# if profit <= float('-' + str(abs(loss))):
+	# 	print('Stop Loss batido!')
+	# 	sys.exit()
 		
-	if lucro >= float(abs(gain)):
+	if profit >= float(abs(stopGain)):
 		print('Stop Gain Batido!')
 		sys.exit()
 
@@ -33,8 +33,9 @@ balance = float(Iq.get_balance())
 entryValue = 2
 entryValueBase = float(entryValue)
 loss = 0
+martingaleCount = 0
 
-stopGain = 0.1
+stopGain = 100
 
 martingale = 3
 profit = 0
@@ -44,11 +45,12 @@ wasWin = True
 print(balance)
 print(entryValue)
 
-def handleMartingale(value, payout):
+def handleMartingale(value, payout, martingaleCount):
 	profit = 0
+  recover = 0.5 if martingaleCount == 1 else 0.25 if martingaleCount == 2 else 0
 		
 	while True:
-		if round(profit * payout, 2) > round(value, 2):
+		if round(profit * payout, 2) > round(value + (value * recover), 2):
 			return round(profit, 2)
 			break
 		profit += 0.01
@@ -80,7 +82,7 @@ while True:
         entryValue = entryValueBase
 
       for i in range(martingale):
-        status, id = Iq.buy(entryValue, pair, dir, 5)
+        status, id = Iq.buy_digital_spot_v2(pair, entryValue, dir, 5)
         payout = handlePayout(pair)
 
         if status:
@@ -90,13 +92,17 @@ while True:
           print(check_win, value)
 
           if check_win == 'loose' or (check_win == 'equal' and i > 0):
+            martingaleCount += 1
             loss += entryValue
-            entryValue = handleMartingale(loss, payout)
+            entryValue = handleMartingale(loss, payout, martingaleCount)
 
             if i == 2:
               wasWin = False
 					
           else:
+            profit += round(value, 2)
+            stop(profit, stopGain)
+            martingaleCount = 0
             loss = 0
             wasWin = True
             break
@@ -104,4 +110,4 @@ while True:
         else:
           print('Não foi possivel comprar.')
 
-  time.sleep(0.5)
+  time.sleep(0.2)
