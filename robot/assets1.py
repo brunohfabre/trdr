@@ -35,9 +35,9 @@ while True:
 
   result = []
 
-  for asset in assets['digital']:
-    if assets['digital'][asset]['open']:
-      result.append(catalogAsset(asset))
+  for asset in assets['turbo']:
+    if assets['turbo'][asset]['open']:
+      result.append(asset)
 
   print(result)
 

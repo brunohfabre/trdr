@@ -1,6 +1,6 @@
-import { getCandleColor } from "./getCandleColor";
+import { getCandleColor } from './getCandleColor';
 
-import { IAsset, ICandle } from "../components/Asset";
+import { IAsset, ICandle } from '../components/Asset';
 
 export type ICandleProcessed = {
   status: string;
@@ -26,25 +26,25 @@ export type IStrategyProcessed = {
 
 export function processAssetsM1(assets: IAsset[]): IStrategyProcessed {
   const mhimin = {
-    name: "MHI",
-    assets: assets.map((asset) => ({
+    name: 'MHI',
+    assets: assets.map(asset => ({
       ...asset,
       candles: asset.candles
-        .filter((candle) => {
+        .filter(candle => {
           const min = String(candle.date.getMinutes()).slice(-1);
 
-          if (min === "5" || min === "0") {
+          if (min === '5' || min === '0') {
             return true;
           }
 
           return false;
         })
-        .map((candle) => {
+        .map(candle => {
           const candleColor = getCandleColor(candle);
-          let entry = "";
+          let entry = '';
 
           const findCandleIndex = asset.candles.findIndex(
-            (item: ICandle) => item.id === candle.id
+            (item: ICandle) => item.id === candle.id,
           );
 
           const analysisCandles = [
@@ -54,39 +54,39 @@ export function processAssetsM1(assets: IAsset[]): IStrategyProcessed {
           ];
 
           if (
-            analysisCandles.filter((item) => item.color === "doji").length > 0
+            analysisCandles.filter(item => item.color === 'doji').length > 0
           ) {
-            entry = "doji";
+            entry = 'doji';
           }
 
           if (
-            analysisCandles.filter((item) => item.color === "green").length >= 2
+            analysisCandles.filter(item => item.color === 'green').length >= 2
           ) {
-            entry = "red";
+            entry = 'red';
           }
 
           if (
-            analysisCandles.filter((item) => item.color === "red").length >= 2
+            analysisCandles.filter(item => item.color === 'red').length >= 2
           ) {
-            entry = "green";
+            entry = 'green';
           }
 
-          if (entry === "doji") {
+          if (entry === 'doji') {
             return {
-              status: "doji",
+              status: 'doji',
               candle,
             };
           }
 
           if (entry === candleColor) {
             return {
-              status: "win",
+              status: 'win',
               candle,
             };
           }
 
           return {
-            status: "loss",
+            status: 'loss',
             candle,
           };
         }),
@@ -94,25 +94,25 @@ export function processAssetsM1(assets: IAsset[]): IStrategyProcessed {
   };
 
   const mhimax = {
-    name: "MHI Maioria",
-    assets: assets.map((asset) => ({
+    name: 'MHI Maioria',
+    assets: assets.map(asset => ({
       ...asset,
       candles: asset.candles
-        .filter((candle) => {
+        .filter(candle => {
           const min = String(candle.date.getMinutes()).slice(-1);
 
-          if (min === "5" || min === "0") {
+          if (min === '5' || min === '0') {
             return true;
           }
 
           return false;
         })
-        .map((candle) => {
+        .map(candle => {
           const candleColor = getCandleColor(candle);
-          let entry = "";
+          let entry = '';
 
           const findCandleIndex = asset.candles.findIndex(
-            (item: ICandle) => item.id === candle.id
+            (item: ICandle) => item.id === candle.id,
           );
 
           const analysisCandles = [
@@ -122,39 +122,39 @@ export function processAssetsM1(assets: IAsset[]): IStrategyProcessed {
           ];
 
           if (
-            analysisCandles.filter((item) => item.color === "doji").length > 0
+            analysisCandles.filter(item => item.color === 'doji').length > 0
           ) {
-            entry = "doji";
+            entry = 'doji';
           }
 
           if (
-            analysisCandles.filter((item) => item.color === "green").length >= 2
+            analysisCandles.filter(item => item.color === 'green').length >= 2
           ) {
-            entry = "green";
+            entry = 'green';
           }
 
           if (
-            analysisCandles.filter((item) => item.color === "red").length >= 2
+            analysisCandles.filter(item => item.color === 'red').length >= 2
           ) {
-            entry = "red";
+            entry = 'red';
           }
 
-          if (entry === "doji") {
+          if (entry === 'doji') {
             return {
-              status: "doji",
+              status: 'doji',
               candle,
             };
           }
 
           if (entry === candleColor) {
             return {
-              status: "win",
+              status: 'win',
               candle,
             };
           }
 
           return {
-            status: "loss",
+            status: 'loss',
             candle,
           };
         }),
@@ -162,25 +162,25 @@ export function processAssetsM1(assets: IAsset[]): IStrategyProcessed {
   };
 
   const million = {
-    name: "MHI",
-    assets: assets.map((asset) => ({
+    name: 'MHI',
+    assets: assets.map(asset => ({
       ...asset,
       candles: asset.candles
         .filter((candle, index) => {
           const min = String(candle.date.getMinutes()).slice(-1);
 
-          if (index > 4 && (min === "5" || min === "0")) {
+          if (index > 4 && (min === '5' || min === '0')) {
             return true;
           }
 
           return false;
         })
-        .map((candle) => {
+        .map(candle => {
           const candleColor = getCandleColor(candle);
-          let entry = "";
+          let entry = '';
 
           const findCandleIndex = asset.candles.findIndex(
-            (item: ICandle) => item.id === candle.id
+            (item: ICandle) => item.id === candle.id,
           );
 
           const analysisCandles = [
@@ -192,39 +192,39 @@ export function processAssetsM1(assets: IAsset[]): IStrategyProcessed {
           ];
 
           if (
-            analysisCandles.filter((item) => item.color === "doji").length > 0
+            analysisCandles.filter(item => item.color === 'doji').length > 0
           ) {
-            entry = "doji";
+            entry = 'doji';
           }
 
           if (
-            analysisCandles.filter((item) => item.color === "green").length >= 3
+            analysisCandles.filter(item => item.color === 'green').length >= 3
           ) {
-            entry = "red";
+            entry = 'red';
           }
 
           if (
-            analysisCandles.filter((item) => item.color === "red").length >= 3
+            analysisCandles.filter(item => item.color === 'red').length >= 3
           ) {
-            entry = "green";
+            entry = 'green';
           }
 
-          if (entry === "doji") {
+          if (entry === 'doji') {
             return {
-              status: "doji",
+              status: 'doji',
               candle,
             };
           }
 
           if (entry === candleColor) {
             return {
-              status: "win",
+              status: 'win',
               candle,
             };
           }
 
           return {
-            status: "loss",
+            status: 'loss',
             candle,
           };
         }),
@@ -232,25 +232,25 @@ export function processAssetsM1(assets: IAsset[]): IStrategyProcessed {
   };
 
   const millionmax = {
-    name: "MHI Maioria",
-    assets: assets.map((asset) => ({
+    name: 'MHI Maioria',
+    assets: assets.map(asset => ({
       ...asset,
       candles: asset.candles
         .filter((candle, index) => {
           const min = String(candle.date.getMinutes()).slice(-1);
 
-          if (index > 4 && (min === "5" || min === "0")) {
+          if (index > 4 && (min === '5' || min === '0')) {
             return true;
           }
 
           return false;
         })
-        .map((candle) => {
+        .map(candle => {
           const candleColor = getCandleColor(candle);
-          let entry = "";
+          let entry = '';
 
           const findCandleIndex = asset.candles.findIndex(
-            (item: ICandle) => item.id === candle.id
+            (item: ICandle) => item.id === candle.id,
           );
 
           const analysisCandles = [
@@ -262,39 +262,39 @@ export function processAssetsM1(assets: IAsset[]): IStrategyProcessed {
           ];
 
           if (
-            analysisCandles.filter((item) => item.color === "doji").length > 0
+            analysisCandles.filter(item => item.color === 'doji').length > 0
           ) {
-            entry = "doji";
+            entry = 'doji';
           }
 
           if (
-            analysisCandles.filter((item) => item.color === "green").length >= 3
+            analysisCandles.filter(item => item.color === 'green').length >= 3
           ) {
-            entry = "green";
+            entry = 'green';
           }
 
           if (
-            analysisCandles.filter((item) => item.color === "red").length >= 3
+            analysisCandles.filter(item => item.color === 'red').length >= 3
           ) {
-            entry = "red";
+            entry = 'red';
           }
 
-          if (entry === "doji") {
+          if (entry === 'doji') {
             return {
-              status: "doji",
+              status: 'doji',
               candle,
             };
           }
 
           if (entry === candleColor) {
             return {
-              status: "win",
+              status: 'win',
               candle,
             };
           }
 
           return {
-            status: "loss",
+            status: 'loss',
             candle,
           };
         }),

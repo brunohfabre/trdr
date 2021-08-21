@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const { PythonShell } = require('python-shell');
 
+const candles1Data = require('./candles.json');
+const candles5Data = require('./candles5.json');
+
 const app = express();
 
 app.use(cors());
@@ -52,6 +55,38 @@ app.get('/assets', async (request, response) => {
   }));
 
   return response.json(data);
+});
+
+app.get('/assetstest', async (request, response) => {
+  const [, result] = await new Promise((resolve, reject) => {
+    PythonShell.run('../robot/assets1test.py', null, (err, results) => {
+      if (err) return reject(err);
+      
+      return resolve(results);
+    });
+  });
+
+  const data = JSON.parse(result.replace(/\'/g, '"'))
+
+  return response.json(data);
+
+  // return response.json(candles1Data);
+});
+
+app.get('/assetstest5', async (request, response) => {
+  // const [, result] = await new Promise((resolve, reject) => {
+  //   PythonShell.run('../robot/assets1test.py', null, (err, results) => {
+  //     if (err) return reject(err);
+      
+  //     return resolve(results);
+  //   });
+  // });
+
+  // const data = JSON.parse(result.replace(/\'/g, '"'))
+
+  // return response.json(data);
+
+  return response.json(candles5Data);
 });
 
 app.listen(4444, () => console.log('🚀 Server running on port 3333!'));
