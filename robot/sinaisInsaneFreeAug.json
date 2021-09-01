@@ -1,0 +1,331 @@
+[
+  {
+    "date": "2021-08-02",
+    "operations": [
+      "01:20;EURJPY;CALL;5",
+      "02:35;AUDCHF;PUT;5",
+      "07:50;EURAUD;PUT;5",
+      "10:25;CADCHF;PUT;5",
+      "11:20;AUDNZD;CALL;5",
+      "12:45;EURAUD;PUT;5",
+      "13:50;EURNZD;CALL;5",
+      "14:05;AUDCHF;PUT;5",
+      "14:20;EURCAD;PUT;5",
+      "14:50;CADJPY;PUT;5",
+      "15:35;EURJPY;PUT;5"
+    ]
+  },
+  {
+    "date": "2021-08-03",
+    "operations": [
+      "01:45;AUDNZD;PUT;5",
+      "02:25;EURUSD;PUT;5",
+      "08:45;AUDNZD;PUT;5",
+      "09:35;CADCHF;PUT;5",
+      "10:35;CADCHF;PUT;5",
+      "12:35;CADCHF;PUT;5",
+      "13:25;GBPJPY;CALL;5",
+      "13:45;GBPUSD;CALL;5",
+      "14:00;GBPUSD;CALL;5",
+      "15:00;GBPAUD;PUT;5",
+      "15:40;GBPAUD;PUT;5",
+      "16:25;EURUSD;PUT;5"
+    ]
+  },
+  {
+    "date": "2021-08-04",
+    "operations": [
+      "01:20;USDJPY;CALL;5",
+      "02:10;USDJPY;CALL;5",
+      "08:10;USDJPY;CALL;5",
+      "09:50;EURCAD;PUT;5",
+      "10:30;EURCAD;PUT;5",
+      "11:30;EURCAD;PUT;5",
+      "12:45;AUDNZD;CALL;5",
+      "13:40;USDNOK;PUT;5",
+      "13:50;EURNZD;CALL;5",
+      "14:25;EURNZD;CALL;5",
+      "14:50;EURGBP;PUT;5",
+      "15:15;EURCAD;CALL;5",
+      "15:45;EURCAD;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-05",
+    "operations": [
+      "01:20;AUDUSD;PUT;5",
+      "08:25;USDCAD;PUT;5",
+      "10:25;USDCAD;PUT;5",
+      "11:00;AUDCAD;CALL;5",
+      "11:40;CADJPY;CALL;5",
+      "12:40;GBPAUD;PUT;5",
+      "13:10;EURAUD;PUT;5",
+      "13:40;USDCAD;PUT;5",
+      "14:10;EURJPY;CALL;5",
+      "14:50;CADCHF;CALL;5",
+      "15:20;CADCHF;CALL;5",
+      "15:40;CADJPY;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-06",
+    "operations": [
+      "01:20;GBPNZD;CALL;5",
+      "01:55;AUDCHF;CALL;5",
+      "07:45;EURAUD;PUT;5",
+      "08:20;AUDUSD;PUT;5",
+      "09:20;AUDUSD;PUT;5",
+      "10:30;GBPCAD;CALL;5",
+      "11:05;EURGBP;PUT;5",
+      "11:10;USDNOK;CALL;5",
+      "12:30;EURGBP;PUT;5",
+      "13:30;EURGBP;CALL;5",
+      "14:00;EURGBP;CALL;5",
+      "14:30;EURGBP;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-09",
+    "operations": [
+      "01:20;EURJPY;CALL;5",
+      "02:35;AUDCHF;PUT;5",
+      "07:50;EURAUD;PUT;5",
+      "08:25;CADCHF;PUT;5",
+      "10:25;CADCHF;PUT;5",
+      "11:20;AUDNZD;CALL;5",
+      "12:45;EURAUD;PUT;5",
+      "13:50;EURNZD;CALL;5",
+      "14:05;AUDCHF;PUT;5",
+      "14:20;EURCAD;PUT;5",
+      "14:50;CADJPY;PUT;5",
+      "15:15;EURCAD;PUT;5",
+      "15:35;EURJPY;PUT;5"
+    ]
+  },
+  {
+    "date": "2021-08-10",
+    "operations": [
+      "01:45;AUDNZD;PUT;5",
+      "02:25;EURUSD;PUT;5",
+      "08:45;AUDNZD;PUT;5",
+      "09:35;CADCHF;PUT;5",
+      "10:35;CADCHF;PUT;5",
+      "11:30;GBPUSD;CALL;5",
+      "12:35;CADCHF;PUT;5",
+      "13:25;GBPJPY;CALL;5",
+      "13:45;GBPUSD;CALL;5",
+      "14:00;GBPUSD;CALL;5",
+      "15:00;GBPAUD;PUT;5",
+      "15:40;GBPAUD;PUT;5",
+      "16:25;EURUSD;PUT;5"
+    ]
+  },
+  {
+    "date": "2021-08-11",
+    "operations": [
+      "01:20;USDJPY;CALL;5",
+      "02:10;USDJPY;CALL;5",
+      "08:10;USDJPY;CALL;5",
+      "09:50;EURCAD;PUT;5",
+      "10:30;EURCAD;PUT;5",
+      "11:30;EURCAD;PUT;5",
+      "12:45;AUDNZD;CALL;5",
+      "13:40;USDNOK;PUT;5",
+      "13:50;EURNZD;CALL;5",
+      "14:25;EURNZD;CALL;5",
+      "14:50;EURGBP;PUT;5",
+      "15:15;EURCAD;CALL;5",
+      "15:45;EURCAD;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-12",
+    "operations": [
+      "01:20;AUDUSD;PUT;5",
+      "02:20;AUDUSD;PUT;5",
+      "08:25;USDCAD;PUT;5",
+      "10:25;USDCAD;PUT;5",
+      "11:00;AUDCAD;CALL;5",
+      "11:40;CADJPY;CALL;5",
+      "12:40;GBPAUD;PUT;5",
+      "13:10;EURAUD;PUT;5",
+      "13:40;USDCAD;PUT;5",
+      "14:10;EURJPY;CALL;5",
+      "14:50;CADCHF;CALL;5",
+      "15:20;CADCHF;CALL;5",
+      "15:40;CADJPY;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-13",
+    "operations": [
+      "01:20;GBPNZD;CALL;5",
+      "01:55;AUDCHF;CALL;5",
+      "07:45;EURAUD;PUT;5",
+      "08:20;AUDUSD;PUT;5",
+      "09:20;AUDUSD;PUT;5",
+      "10:30;GBPCAD;CALL;5",
+      "11:05;EURGBP;PUT;5",
+      "11:10;USDNOK;CALL;5",
+      "12:30;EURGBP;PUT;5",
+      "13:30;EURGBP;CALL;5",
+      "14:00;EURGBP;CALL;5",
+      "14:30;EURGBP;CALL;5",
+      "15:30;EURGBP;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-16",
+    "operations": [
+      "01:20;EURJPY;CALL;5",
+      "02:35;AUDCHF;PUT;5",
+      "07:50;EURAUD;PUT;5",
+      "08:25;CADCHF;PUT;5",
+      "10:25;CADCHF;PUT;5",
+      "11:20;AUDNZD;CALL;5",
+      "12:45;EURAUD;PUT;5",
+      "13:50;EURNZD;CALL;5",
+      "14:05;AUDCHF;PUT;5",
+      "14:20;EURCAD;PUT;5",
+      "14:50;CADJPY;PUT;5",
+      "15:15;EURCAD;PUT;5",
+      "15:35;EURJPY;PUT;5"
+    ]
+  },
+  {
+    "date": "2021-08-17",
+    "operations": [
+      "02:25;EURUSD;PUT;5",
+      "08:45;AUDNZD;PUT;5",
+      "09:35;CADCHF;PUT;5",
+      "10:35;CADCHF;PUT;5",
+      "11:30;GBPUSD;CALL;5",
+      "12:35;CADCHF;PUT;5",
+      "13:25;GBPJPY;CALL;5",
+      "13:45;GBPUSD;CALL;5",
+      "14:00;GBPUSD;CALL;5",
+      "15:00;GBPAUD;PUT;5",
+      "15:40;GBPAUD;PUT;5",
+      "16:25;EURUSD;PUT;5"
+    ]
+  },
+  {
+    "date": "2021-08-18",
+    "operations": [
+      "01:20;USDJPY;CALL;5",
+      "02:10;USDJPY;CALL;5",
+      "08:10;USDJPY;CALL;5",
+      "09:50;EURCAD;PUT;5",
+      "10:30;EURCAD;PUT;5",
+      "11:30;EURCAD;PUT;5",
+      "12:45;AUDNZD;CALL;5",
+      "13:40;USDNOK;PUT;5",
+      "13:50;EURNZD;CALL;5",
+      "14:25;EURNZD;CALL;5",
+      "14:50;EURGBP;PUT;5",
+      "15:15;EURCAD;CALL;5",
+      "15:45;EURCAD;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-19",
+    "operations": [
+      "01:20;AUDUSD;PUT;5",
+      "02:20;AUDUSD;PUT;5",
+      "08:25;USDCAD;PUT;5",
+      "10:25;USDCAD;PUT;5",
+      "11:00;AUDCAD;CALL;5",
+      "11:40;CADJPY;CALL;5",
+      "12:40;GBPAUD;PUT;5",
+      "13:10;EURAUD;PUT;5",
+      "13:40;USDCAD;PUT;5",
+      "14:10;EURJPY;CALL;5",
+      "14:50;CADCHF;CALL;5",
+      "15:20;CADCHF;CALL;5",
+      "15:40;CADJPY;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-20",
+    "operations": [
+      "01:55;AUDCHF;CALL;5",
+      "07:45;EURAUD;PUT;5",
+      "08:20;AUDUSD;PUT;5",
+      "09:20;AUDUSD;PUT;5",
+      "10:30;GBPCAD;CALL;5",
+      "11:05;EURGBP;PUT;5",
+      "11:10;USDNOK;CALL;5",
+      "12:30;EURGBP;PUT;5",
+      "13:30;EURGBP;CALL;5",
+      "14:00;EURGBP;CALL;5",
+      "14:30;EURGBP;CALL;5",
+      "15:30;EURGBP;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-23",
+    "operations": [
+      "01:20;EURJPY;CALL;5",
+      "02:35;AUDCHF;PUT;5",
+      "07:50;EURAUD;PUT;5",
+      "08:25;CADCHF;PUT;5",
+      "10:25;CADCHF;PUT;5",
+      "11:20;AUDNZD;CALL;5",
+      "12:45;EURAUD;PUT;5",
+      "13:50;EURNZD;CALL;5",
+      "14:05;AUDCHF;PUT;5",
+      "14:20;EURCAD;PUT;5",
+      "14:50;CADJPY;PUT;5",
+      "15:15;EURCAD;PUT;5",
+      "15:35;EURJPY;PUT;5"
+    ]
+  },
+  {
+    "date": "2021-08-25",
+    "operations": [
+      "01:20;USDJPY;CALL;5",
+      "02:10;USDJPY;CALL;5",
+      "08:10;USDJPY;CALL;5",
+      "09:50;EURCAD;PUT;5",
+      "10:30;EURCAD;PUT;5",
+      "11:30;EURCAD;PUT;5",
+      "12:45;AUDNZD;CALL;5",
+      "13:40;USDNOK;PUT;5",
+      "13:50;EURNZD;CALL;5",
+      "14:25;EURNZD;CALL;5",
+      "14:50;EURGBP;PUT;5",
+      "15:15;EURCAD;CALL;5",
+      "15:45;EURCAD;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-26",
+    "operations": [
+      "08:25;USDCAD;PUT;5",
+      "09:25;USDCAD;PUT;5",
+      "10:25;USDCAD;PUT;5",
+      "11:00;AUDCAD;CALL;5",
+      "12:40;GBPAUD;PUT;5",
+      "13:10;EURAUD;PUT;5",
+      "14:10;EURJPY;CALL;5",
+      "14:50;CADCHF;CALL;5",
+      "15:20;CADCHF;CALL;5",
+      "15:40;CADJPY;CALL;5"
+    ]
+  },
+  {
+    "date": "2021-08-27",
+    "operations": [
+      "08:20;AUDUSD;PUT;5",
+      "09:20;AUDUSD;PUT;5",
+      "10:30;GBPCAD;CALL;5",
+      "11:05;EURGBP;PUT;5",
+      "11:10;EURGBP;CALL;5",
+      "12:30;EURGBP;PUT;5",
+      "13:30;EURGBP;CALL;5",
+      "14:00;EURGBP;CALL;5",
+      "14:30;EURGBP;CALL;5",
+      "15:30;EURGBP;CALL;5"
+    ]
+  }
+]

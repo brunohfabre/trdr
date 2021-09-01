@@ -146,13 +146,13 @@ export function processStrategies(
           };
         }
 
-        // if (entry === candles[findCandleIndex + 2].color) {
-        //   return {
-        //     ...candle,
-        //     status: 'win',
-        //     position: 'mg2',
-        //   };
-        // }
+        if (entry === candles[findCandleIndex + 2].color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'mg2',
+          };
+        }
 
         return {
           ...candle,
@@ -229,13 +229,13 @@ export function processStrategies(
           };
         }
 
-        // if (entry === candles[findCandleIndex + 2].color) {
-        //   return {
-        //     ...candle,
-        //     status: 'win',
-        //     position: 'mg2',
-        //   };
-        // }
+        if (entry === candles[findCandleIndex + 2].color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'mg2',
+          };
+        }
 
         return {
           ...candle,
@@ -312,13 +312,252 @@ export function processStrategies(
           };
         }
 
-        // if (entry === candles[findCandleIndex + 2].color) {
-        //   return {
-        //     ...candle,
-        //     status: 'win',
-        //     position: 'mg2',
-        //   };
-        // }
+        if (entry === candles[findCandleIndex + 2].color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'mg2',
+          };
+        }
+
+        return {
+          ...candle,
+          status: 'loss',
+          position: 'init',
+        };
+      });
+
+    return result;
+  }
+
+  if (strategy === 'mhi2') {
+    const result = candles
+      .filter((candle, index) => {
+        const min = candle.date.getMinutes();
+
+        if (
+          index > 4 &&
+          index < candles.length - 4 &&
+          (min === 5 || min === 35)
+        ) {
+          return true;
+        }
+
+        return false;
+      })
+      .map(candle => {
+        const findCandleIndex = candles.findIndex(
+          item => item.id === candle.id,
+        );
+
+        const analysisCandles = [
+          candles[findCandleIndex - 2],
+          candles[findCandleIndex - 3],
+          candles[findCandleIndex - 4],
+        ];
+        let entry = '';
+
+        if (analysisCandles.filter(item => item.color === 'doji').length > 0) {
+          entry = 'doji';
+        }
+
+        if (analysisCandles.filter(item => item.color === 'red').length >= 2) {
+          entry = 'green';
+        }
+
+        if (
+          analysisCandles.filter(item => item.color === 'green').length >= 2
+        ) {
+          entry = 'red';
+        }
+
+        if (entry === 'doji') {
+          return {
+            ...candle,
+            status: 'doji',
+            position: 'doji',
+          };
+        }
+
+        if (entry === candle.color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'init',
+          };
+        }
+
+        if (entry === candles[findCandleIndex + 1].color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'mg1',
+          };
+        }
+
+        if (entry === candles[findCandleIndex + 2].color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'mg2',
+          };
+        }
+
+        return {
+          ...candle,
+          status: 'loss',
+          position: 'init',
+        };
+      });
+
+    return result;
+  }
+
+  if (strategy === 'mhi3') {
+    const result = candles
+      .filter((candle, index) => {
+        const min = candle.date.getMinutes();
+
+        if (
+          index > 4 &&
+          index < candles.length - 4 &&
+          (min === 10 || min === 40)
+        ) {
+          return true;
+        }
+
+        return false;
+      })
+      .map(candle => {
+        const findCandleIndex = candles.findIndex(
+          item => item.id === candle.id,
+        );
+
+        const analysisCandles = [
+          candles[findCandleIndex - 3],
+          candles[findCandleIndex - 4],
+          candles[findCandleIndex - 5],
+        ];
+        let entry = '';
+
+        if (analysisCandles.filter(item => item.color === 'doji').length > 0) {
+          entry = 'doji';
+        }
+
+        if (analysisCandles.filter(item => item.color === 'red').length >= 2) {
+          entry = 'green';
+        }
+
+        if (
+          analysisCandles.filter(item => item.color === 'green').length >= 2
+        ) {
+          entry = 'red';
+        }
+
+        if (entry === 'doji') {
+          return {
+            ...candle,
+            status: 'doji',
+            position: 'doji',
+          };
+        }
+
+        if (entry === candle.color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'init',
+          };
+        }
+
+        if (entry === candles[findCandleIndex + 1].color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'mg1',
+          };
+        }
+
+        if (entry === candles[findCandleIndex + 2].color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'mg2',
+          };
+        }
+
+        return {
+          ...candle,
+          status: 'loss',
+          position: 'init',
+        };
+      });
+
+    return result;
+  }
+
+  if (strategy === 'trader') {
+    const result = candles
+      .filter((candle, index) => {
+        const min = candle.date.getMinutes();
+
+        if (index > 11 && index < candles.length - 10 && min === 25) {
+          return true;
+        }
+
+        return false;
+      })
+      .map(candle => {
+        const findCandleIndex = candles.findIndex(
+          item => item.id === candle.id,
+        );
+
+        const analysisCandle = candles[findCandleIndex - 5];
+        let entry = '';
+
+        if (analysisCandle.color === 'doji') {
+          entry = 'doji';
+        }
+
+        if (analysisCandle.color === 'red') {
+          entry = 'red';
+        }
+
+        if (analysisCandle.color === 'green') {
+          entry = 'green';
+        }
+
+        if (entry === 'doji') {
+          return {
+            ...candle,
+            status: 'doji',
+            position: 'doji',
+          };
+        }
+
+        if (entry === candle.color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'init',
+          };
+        }
+
+        if (entry === candles[findCandleIndex + 6].color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'mg1',
+          };
+        }
+
+        if (entry === candles[findCandleIndex + 2].color) {
+          return {
+            ...candle,
+            status: 'win',
+            position: 'mg2',
+          };
+        }
 
         return {
           ...candle,

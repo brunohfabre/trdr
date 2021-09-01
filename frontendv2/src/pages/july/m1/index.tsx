@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { Box, SimpleGrid, Text, Select, HStack } from '@chakra-ui/react';
 import { api } from '../../../services/api';
 
-import { Asset } from './Asset';
+import { Day } from './Day';
+
+import { processStrategies } from './processStrategies';
 
 export type CandleType = {
   close: 1.18493;
@@ -15,7 +17,7 @@ export type CandleType = {
   position: string;
 };
 
-type DayType = {
+export type DayType = {
   day: number;
   candles: CandleType[];
 };
@@ -41,39 +43,45 @@ const strategies = [
     label: 'Padrão 23',
   },
   {
-    value: 'r7',
-    label: 'R7',
+    value: 'mhi',
+    label: 'MHI',
+  },
+  {
+    value: 'mhi2',
+    label: 'MHI 2',
+  },
+  {
+    value: 'mhi3',
+    label: 'MHI 3',
+  },
+  {
+    value: 'mhihigh',
+    label: 'MHI maioria',
+  },
+  {
+    value: 'mhi2high',
+    label: 'MHI 2 maioria',
+  },
+  {
+    value: 'mhi3high',
+    label: 'MHI 3 maioria',
+  },
+  {
+    value: 'mhiimpar',
+    label: 'MHI + padrão impar',
+  },
+  {
+    value: 'nick',
+    label: 'Nick',
   },
 ];
 
 export default function July(): JSX.Element {
-  const [assetsData, setAssetsData] = useState<AssetDataType[]>([]);
-  const [assets, setAssets] = useState<AssetType[]>([]);
+  const [assetData, setAssetData] = useState<DayType[]>([]);
+  const [asset, setAsset] = useState<DayType[]>([]);
   const [loading, setLoading] = useState(false);
   const [strategy, setStrategy] = useState('');
-  const [days, setDays] = useState<number[]>([]);
-
-  useEffect(() => {
-    async function loadAssets(): Promise<void> {
-      try {
-        setLoading(true);
-
-        const response = await api.get('/assetstest');
-
-        const data: AssetDataType[] = response.data.filter(
-          (asset: AssetDataType) => !asset.name.includes('OTC'),
-        );
-
-        setAssetsData(data);
-
-        setDays(data[0].days.map(item => item.day));
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadAssets();
-  }, []);
+  const [days, setDays] = useState<DayType[]>([]);
 
   function getCandleColor(candle: CandleType): string {
     if (candle.close > candle.open) {
@@ -86,23 +94,41 @@ export default function July(): JSX.Element {
     return 'doji';
   }
 
-  function handleSelectDay(daySelected: number): void {
-    const response = assetsData.map(asset => {
-      const findDay = asset.days.find(day => day.day === daySelected);
+  useEffect(() => {
+    async function loadAssets(): Promise<void> {
+      try {
+        setLoading(true);
 
-      return {
-        name: asset.name,
-        candles:
-          findDay?.candles.map(candle => ({
-            ...candle,
-            color: getCandleColor(candle),
-            date: new Date(candle.from * 1000),
-          })) || [],
-      };
-    });
+        const response = await api.get('/assetstest');
 
-    setAssets(response);
-  }
+        setAssetData(
+          response.data.days.map((day: DayType) => ({
+            ...day,
+            candles: day.candles.map(candle => ({
+              ...candle,
+              date: new Date(candle.from * 1000),
+              color: getCandleColor(candle),
+            })),
+          })),
+        );
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadAssets();
+  }, []);
+
+  useEffect(() => {
+    if (strategy && assetData.length) {
+      const values = assetData.map(day => ({
+        day: day.day,
+        candles: processStrategies(day.candles, strategy),
+      }));
+
+      setAsset(values);
+    }
+  }, [strategy, assetData]);
 
   if (loading) {
     return <Text>Loading...</Text>;
@@ -123,28 +149,19 @@ export default function July(): JSX.Element {
             <option value={item.value}>{item.label}</option>
           ))}
         </Select>
-
-        <Select
-          w="192px"
-          defaultValue="0"
-          onChange={e => handleSelectDay(Number(e.target.value))}
-        >
-          <option value="0" disabled>
-            Select a day
-          </option>
-          {days.map(day => (
-            <option value={day}>{day}</option>
-          ))}
-        </Select>
       </HStack>
 
-      {!!assets.length && !!strategy && (
+      {asset.map(day => (
+        <Day data={day} />
+      ))}
+
+      {/* {!!assets.length && !!strategy && (
         <SimpleGrid columns={4} spacing="4" m="4">
           {assets.map(asset => (
             <Asset key={asset.name} asset={asset} strategy={strategy} />
           ))}
         </SimpleGrid>
-      )}
+      )} */}
     </Box>
   );
 }

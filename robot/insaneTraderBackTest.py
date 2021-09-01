@@ -6,7 +6,7 @@ from iqoptionapi.stable_api import IQ_Option
 from user import user
 
 Iq = IQ_Option(user['username'], user['password'])
-check, reason = Iq.connect()
+check = Iq.connect()
 
 if check:
   print('Successfully connected')

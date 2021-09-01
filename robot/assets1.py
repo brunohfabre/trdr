@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from dateutil import tz
 from iqoptionapi.stable_api import IQ_Option
 
-Iq = IQ_Option("bruno.hfabre@gmail.com","Jsati27l81")
+Iq = IQ_Option("bruno.hfabre@gmail.com", "Jsati27l81")
 check, reason = Iq.connect()
 
 if check:
@@ -16,28 +16,35 @@ else:
   sys.exit()
 
 def catalogAsset(asset):
-  hour = int(datetime.now().strftime('%H'))
-  minleft = int(datetime.now().strftime('%M')[0])
-  minright = int(datetime.now().strftime('%M')[1])
+  days = [1, 2, 5, 6, 7, 8, 9, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30]
 
-  # currentTime = datetime.now().replace(minute = int(str(minleft) + str(0 if minright <= 4 else 5)), second = 0, microsecond = 0)
-  currentTime = datetime.now().replace(hour = 7, minute = 55, second = 0, microsecond = 0)
+  response = []
 
-  candles = Iq.get_candles(asset, 60, 119, currentTime.timestamp())
+  for day in days:
+    currentTime = datetime.now().replace(year = 2021, month = 7, day = day, hour = 14, minute = 4, second = 0, microsecond = 0)
+
+    candles = Iq.get_candles(asset, 60, 430, currentTime.timestamp())
+
+    response.append({
+      "day": day,
+      "candles": candles
+    })
 
   return {
     "name": asset,
-    "candles": candles
+    "days": response
   }
 
 while True:
   assets = Iq.get_all_open_time()
 
-  result = []
+  # result = []
 
-  for asset in assets['turbo']:
-    if assets['turbo'][asset]['open']:
-      result.append(asset)
+  # for asset in assets['digital']:
+  #   if assets['turbo'][asset]['open']:
+  #     result.append(asset)
+
+  result = catalogAsset('EURUSD')
 
   print(result)
 

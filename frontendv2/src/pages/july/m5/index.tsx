@@ -49,8 +49,20 @@ const strategies = [
     label: 'MHI',
   },
   {
+    value: 'mhi2',
+    label: 'MHI 2',
+  },
+  {
+    value: 'mhi3',
+    label: 'MHI 3',
+  },
+  {
     value: 'mhihigh',
     label: 'MHI Maioria',
+  },
+  {
+    value: 'trader',
+    label: 'Trader',
   },
 ];
 

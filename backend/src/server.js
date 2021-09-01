@@ -4,6 +4,9 @@ const { PythonShell } = require('python-shell');
 
 const candles1Data = require('./candles.json');
 const candles5Data = require('./candles5.json');
+const candles2Data = require('./candles2.json');
+const candles15Data = require('./candles15.json');
+const mOneJuly = require('./5_13_m1_july.json');
 
 const app = express();
 
@@ -58,19 +61,35 @@ app.get('/assets', async (request, response) => {
 });
 
 app.get('/assetstest', async (request, response) => {
-  const [, result] = await new Promise((resolve, reject) => {
-    PythonShell.run('../robot/assets1test.py', null, (err, results) => {
-      if (err) return reject(err);
+  // const [, result] = await new Promise((resolve, reject) => {
+  //   PythonShell.run('../robot/assets1.py', null, (err, results) => {
+  //     if (err) return reject(err);
       
-      return resolve(results);
-    });
-  });
+  //     return resolve(results);
+  //   });
+  // });
 
-  const data = JSON.parse(result.replace(/\'/g, '"'))
+  // const data = JSON.parse(result.replace(/\'/g, '"'))
 
-  return response.json(data);
+  // return response.json(data);
 
-  // return response.json(candles1Data);
+  return response.json(candles1Data);
+});
+
+app.get('/assetstest2', async (request, response) => {
+  // const [, result] = await new Promise((resolve, reject) => {
+  //   PythonShell.run('../robot/assets2test.py', null, (err, results) => {
+  //     if (err) return reject(err);
+      
+  //     return resolve(results);
+  //   });
+  // });
+
+  // const data = JSON.parse(result.replace(/\'/g, '"'))
+
+  // return response.json(data);
+
+  return response.json(candles2Data);
 });
 
 app.get('/assetstest5', async (request, response) => {
@@ -87,6 +106,22 @@ app.get('/assetstest5', async (request, response) => {
   // return response.json(data);
 
   return response.json(candles5Data);
+});
+
+app.get('/assetstest15', async (request, response) => {
+  // const [, result] = await new Promise((resolve, reject) => {
+  //   PythonShell.run('../robot/assets15test.py', null, (err, results) => {
+  //     if (err) return reject(err);
+      
+  //     return resolve(results);
+  //   });
+  // });
+
+  // const data = JSON.parse(result.replace(/\'/g, '"'))
+
+  // return response.json(data);
+
+  return response.json(candles15Data);
 });
 
 app.listen(4444, () => console.log('🚀 Server running on port 3333!'));
